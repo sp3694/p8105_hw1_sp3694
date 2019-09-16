@@ -8,23 +8,32 @@ output: github_document
 # Problem 1
 
 
-```{r Problem_1}
+```{r Problem_1, include = FALSE}
 library(tidyverse)
 
 first_df = tibble(
-  x = rnorm(8),
-  logical_vec = x > 0,
-  vec_char = 8,
-  x <- factor(c("a","b","c")),
+  vec_rsamp = rnorm(8),
+  vec_logical = vec_rsamp > 0,
+  vec_char = letters[1:8],
+  vec_factor = rep(c("a","b","c"), length = 8)
 )
 
-mean(pull(first_df, x))
+mean(first_df[["vec_rsamp"]])
+mean(first_df[["vec_logical"]])
+mean(first_df[["vec_char"]])
+mean(first_df[["vec_factor"]])
 ```
-```{r Problem_1.1}
+We were able to get the mean for vec_rsamp and vec_logical because they are numeric. We were unable to get the mean for vec_char and vec_factor. 
 
+```{r}
+nvec_logical = as.numeric(first_df[["vec_logical"]])
 ```
-
-
+```{r}
+nvec_char = as.numeric(first_df[["vec_char"]])
+```
+```{r}
+nvec_factor = as.numeric(first_df[["vec_factor"]])
+```
 
 # Problem 2
 
@@ -33,9 +42,9 @@ mean(pull(first_df, x))
 second_df = tibble(
   x = rnorm(500),
   y = rnorm(500),
-  logical_vec = x + y > 1,
-  num_vec = as.numeric(logical_vec),
-  fac_vec = as.factor(logical_vec),
+  vec_logical = x + y > 1,
+  vec_numeric = as.numeric(vec_logical),
+  vec_factor = as.factor(vec_logical),
 )
 
 nrow(second_df)
@@ -45,8 +54,8 @@ mean(pull(second_df, x))
 median(pull(second_df, x))
 sd(pull(second_df, x))
 pull(second_df, y)
-pull(second_df, num_vec)
-pull(second_df, fac_vec)
+pull(second_df, vec_numeric)
+pull(second_df, vec_factor)
 
 ```
 Number of rows = 500 
@@ -56,7 +65,7 @@ Median = 0.03718347
 Standard Deviation = 1.043226
 
 ```{r scatter_plot}
-ggplot(second_df, aes(x = x, y = y, color = y)) + geom_point()
+ggplot(second_df, aes(x = x, y = y, color = vec_logical)) + geom_point()
 
 ggsave("scatter_plotHW1.pdf")
 ```
