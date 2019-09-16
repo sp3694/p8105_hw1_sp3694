@@ -1,0 +1,53 @@
+---
+title: "Homework 1"
+author: "Stephen Powers"
+date: 2019-09-10
+output: github_document
+---
+
+# Problem 1
+
+
+```{r Problem_1}
+library(tidyverse)
+
+first_df = tibble(
+  x = rnorm(8),
+  logical_vec = x > 0,
+  vec_char = 8
+)
+
+median_samp = median(pull(first_df, x))
+```
+```{r Problem_1.1}
+
+```
+
+
+
+# Problem 2
+
+
+```{r Problem 2}
+second_df = tibble(
+  x = rnorm(500),
+  y = rnorm(500),
+  logical_vec = x + y > 1,
+  num_vec = as.numeric(logical_vec),
+  fac_vec = as.factor(logical_vec),
+)
+
+nrow(second_df)
+ncol(second_df)
+pull(second_df, x)
+mean(pull(second_df, x))
+median(pull(second_df, x))
+sd(pull(second_df, x))
+pull(second_df, y)
+pull(second_df, num_vec)
+pull(second_df, fac_vec)
+
+```
+
+
+
