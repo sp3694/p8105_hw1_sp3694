@@ -5,7 +5,7 @@ date: 2019-09-10
 output: github_document
 ---
 
-# Problem 1
+## Problem 1
 
 Create a data frame comprised of:
 
@@ -26,7 +26,7 @@ first_df = tibble(
 
 ```
 
-## Calculate Means
+### Calculate Means
 
 ```{r}
 mean(first_df[["vec_rsamp"]])
@@ -65,8 +65,14 @@ This introduces NAs in place of factorial values by coercion.
 
 
 
-# Problem 2
+## Problem 2
 
+Create a data frame comprised of:
+(1) x: a random sample of size 500 from a standard Normal distribution
+(2) y: a random sample of size 500 from a standard Normal distribution
+(3) A logical vector indicating whether x + y > 1
+(4) A numeric vector created by coercing the above logical vector
+(5) A factor vector created by coercing the above logical vector
 
 ```{r Problem 2}
 second_df = tibble(
@@ -94,15 +100,23 @@ Mean = 0.03911527
 Median = 0.03718347
 Standard Deviation = 1.043226
 
+### Scatter Plots
+
+(1) Logical Scatter Plot 
+
 ```{r scatter_plot}
 ggplot(second_df, aes(x = x, y = y, color = vec_logical)) + geom_point()
 
 ggsave("scatter_plotHW1.pdf")
 ```
 
+(2) Numeric Scatter Plot 
+
 ```{r scatter_plot2}
 ggplot(second_df, aes(x = x, y = y, color = vec_numeric)) + geom_point()
 ```
+
+(3) Factor Scatter Plot 
 
 ```{r scatter_plot3}
 ggplot(second_df, aes(x = x, y = y, color = vec_factor)) + geom_point()
