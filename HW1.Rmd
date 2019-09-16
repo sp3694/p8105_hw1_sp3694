@@ -14,10 +14,11 @@ library(tidyverse)
 first_df = tibble(
   x = rnorm(8),
   logical_vec = x > 0,
-  vec_char = 8
+  vec_char = 8,
+  x <- factor(c("a","b","c")),
 )
 
-median_samp = median(pull(first_df, x))
+mean(pull(first_df, x))
 ```
 ```{r Problem_1.1}
 
@@ -47,6 +48,17 @@ pull(second_df, y)
 pull(second_df, num_vec)
 pull(second_df, fac_vec)
 
+```
+Number of rows = 500 
+Number of columns = 5
+Mean = 0.03911527
+Median = 0.03718347
+Standard Deviation = 1.043226
+
+```{r scatter_plot}
+ggplot(second_df, aes(x = x, y = y, color = y)) + geom_point()
+
+ggsave("scatter_plotHW1.pdf")
 ```
 
 
