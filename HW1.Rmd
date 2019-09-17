@@ -52,13 +52,13 @@ This introduces NAs in place of factorial values by coercion.
 (1) Convert the logical vector to numeric, and multiply the random sample by the result
 
 ```{r}
-
+nvec_factor = as.numeric(first_df[["vec_factor"]])*vec_rsamp 
 ```
 
 (2) Convert the logical vector to a factor, and multiply the random sample by the result
 
 ```{r}
-
+nvec_factor = as.factor(first_df[["vec_factor"]])*vec_rsamp 
 ```
 
 (3) Convert the logical vector to a factor and then convert the result to numeric, and multiply the random sample by the result
@@ -82,23 +82,10 @@ second_df = tibble(
   vec_numeric = as.numeric(vec_logical),
   vec_factor = as.factor(vec_logical),
 )
-
-nrow(second_df)
-ncol(second_df)
-pull(second_df, x)
-mean(pull(second_df, x))
-median(pull(second_df, x))
-sd(pull(second_df, x))
-pull(second_df, y)
-pull(second_df, vec_numeric)
-pull(second_df, vec_factor)
-
 ```
-Number of rows = 500 
-Number of columns = 5
-Mean = 0.03911527
-Median = 0.03718347
-Standard Deviation = 1.043226
+
+### Inline Code
+This data frame has 'nrow(second_df)' rows and 'ncol(second_df)' columns.The mean, median, and standard deviation of the 'x' variable is 'mean(pull(second_df, x))', median(pull(second_df, x)), and sd(pull(second_df, x)).
 
 ### Scatter Plots
 
