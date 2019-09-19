@@ -20,8 +20,8 @@ library(tidyverse)
 first_df = tibble(
   vec_rsamp = rnorm(8),
   vec_logical = vec_rsamp > 0,
-  vec_char = letters[1:8],
-  vec_factor = rep(c("a","b","c"), length = 8)
+  vec_char = c("a","b","c","d","e","f","g","h"),
+  vec_factor = factor(c("i","j","k","i","j","k","i","j"))
 )
 
 ```
@@ -66,7 +66,6 @@ as.factor(pull(first_df, vec_logical)) * pull(first_df,vec_rsamp)
 ```{r}
 as.numeric(as.factor(pull(first_df, vec_logical))) * pull(first_df,vec_rsamp) 
 ```
-
 
 ## Problem 2
 
