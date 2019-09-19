@@ -37,32 +37,35 @@ mean(pull(first_df, vec_factor))
 We were able to get the means for vec_rsamp and vec_logical because they are numeric. We were unable to get the mean for vec_char and vec_factor because they are not numeric values.  
 
 ```{r}
-nvec_logical = as.numeric(first_df[["vec_logical"]])
+as.numeric(pull(first_df, vec_logical))
 ```
-Not sure what this does yet. 
+This code converts FALSE to 0 and True to 1.
 ```{r}
-nvec_char = as.numeric(first_df[["vec_char"]])
+as.numeric(pull(first_df, vec_char)) 
 ```
 This introduces NAs in place of characters by coercion.
 ```{r}
-nvec_factor = as.numeric(first_df[["vec_factor"]])
+as.numeric(pull(first_df, vec_factor))
 ```
 This introduces NAs in place of factorial values by coercion.
 
 (1) Convert the logical vector to numeric, and multiply the random sample by the result
 
 ```{r}
-nvec_factor = as.numeric(first_df[["vec_factor"]]) * pull(first_df,vec_rsamp) 
+as.numeric(pull(first_df, vec_logical)) * pull(first_df,vec_rsamp) 
 ```
 
 (2) Convert the logical vector to a factor, and multiply the random sample by the result
 
 ```{r}
-nvec_factor = as.factor(first_df[["vec_factor"]])*pull(first_df,vec_rsamp)
+as.factor(pull(first_df, vec_logical)) * pull(first_df,vec_rsamp) 
 ```
 
 (3) Convert the logical vector to a factor and then convert the result to numeric, and multiply the random sample by the result
 
+```{r}
+as.numeric(as.factor(pull(first_df, vec_logical))) * pull(first_df,vec_rsamp) 
+```
 
 
 ## Problem 2
