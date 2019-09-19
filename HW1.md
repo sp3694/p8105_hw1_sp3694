@@ -20,13 +20,13 @@ Create a data frame comprised of:
 mean(first_df[["vec_rsamp"]])
 ```
 
-    ## [1] 0.4758378
+    ## [1] -0.2630742
 
 ``` r
 mean(first_df[["vec_logical"]])
 ```
 
-    ## [1] 0.5
+    ## [1] 0.375
 
 ``` r
 mean(first_df[["vec_char"]])
