@@ -14,7 +14,7 @@ Create a data frame comprised of:
 (3) a character vector of length 8
 (4) a factor vector of length 8, with 3 different factor “levels”
 
-```{r Problem_1, include = FALSE}
+```{r }
 library(tidyverse)
 
 first_df = tibble(
@@ -23,7 +23,6 @@ first_df = tibble(
   vec_char = c("a","b","c","d","e","f","g","h"),
   vec_factor = factor(c("i","j","k","i","j","k","i","j"))
 )
-
 ```
 
 ### Calculate Means
@@ -34,20 +33,28 @@ mean(pull(first_df, vec_logical))
 mean(pull(first_df, vec_char))
 mean(pull(first_df, vec_factor))
 ```
-We were able to get the means for vec_rsamp and vec_logical because they are numeric. We were unable to get the mean for vec_char and vec_factor because they are not numeric values.  
+We were able to get the means for vec_rsamp and vec_logical because they are numeric. We were unable to get the mean for vec_char and vec_factor because they are not numeric or logical values.  
+
+### Converting Variables
 
 ```{r}
 as.numeric(pull(first_df, vec_logical))
 ```
-This code converts FALSE to 0 and True to 1.
+This code converts the logical vectors values "TRUE" and "FALSE" into 1 and 0. This occurs because in R language TRUE = 1 and FALSE = 0. 
+
 ```{r}
 as.numeric(pull(first_df, vec_char)) 
 ```
-This introduces NAs in place of characters by coercion.
+This introduces NAs in place of characters by coercion because character vectors are unable to be coerced into numerical vectors. 
+
 ```{r}
 as.numeric(pull(first_df, vec_factor))
 ```
-This introduces NAs in place of factorial values by coercion.
+Each factor level was assigned a different numeric value for the factor values.
+
+Yes, this helps explain what happens when you try to take the mean because it shows what can be converted into numeric and what cannot.  
+
+### Creating Second Code Chunk
 
 (1) Convert the logical vector to numeric, and multiply the random sample by the result
 
@@ -111,4 +118,4 @@ ggplot(second_df, aes(x = x, y = y, color = vec_numeric)) + geom_point()
 ggplot(second_df, aes(x = x, y = y, color = vec_factor)) + geom_point()
 ```
 
-All three of the scatter plots look very similar. Logical and factor both use "true" or "false", but numeric is 0 or 1.
+All three of the scatter plots look very similar. However, the logical and factor scale both use "TRUE" or "FALSE", but the numeric scale is 0 or 1.
